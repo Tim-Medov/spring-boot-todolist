@@ -2,21 +2,23 @@
 package enterprise.services;
 
 import enterprise.models.Deed;
-import enterprise.repository.DeedRepository;
+import enterprise.repositories.DeedRepository;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class deedService {
+public class DeedService {
 
     private DeedRepository deedRepository;
 
-    public deedService(DeedRepository deedRepository) {
+    public DeedService(DeedRepository deedRepository) {
+
         this.deedRepository = deedRepository;
     }
 
     public List<Deed> showTodolist() {
+
         return (List<Deed>) deedRepository.findAll();
     }
 
@@ -27,6 +29,7 @@ public class deedService {
         Optional<Deed> element = deedRepository.findById(id);
 
         if (element.isPresent()) {
+
             deed = element.get();
         }
 
@@ -43,6 +46,7 @@ public class deedService {
     }
 
     public void saveDeed(Deed deed) {
+
         deedRepository.save(deed);
     }
 
@@ -63,6 +67,7 @@ public class deedService {
     }
 
     public void deleteAllDeeds() {
+
         deedRepository.deleteAll();
     }
 }

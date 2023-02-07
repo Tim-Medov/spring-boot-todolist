@@ -2,7 +2,7 @@
 package enterprise.controllers;
 
 import enterprise.models.Deed;
-import enterprise.services.deedService;
+import enterprise.services.DeedService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.stereotype.Controller;
@@ -14,10 +14,11 @@ import javax.validation.Valid;
 @RequestMapping("/todolist")
 public class TodolistController {
 
-    private deedService deedService;
+    private DeedService deedService;
 
     @Autowired
-    public TodolistController(deedService deedService) {
+    public TodolistController(DeedService deedService) {
+
         this.deedService = deedService;
     }
 
@@ -33,6 +34,7 @@ public class TodolistController {
     public String showDeed(@PathVariable("id") int id, Model model) {
 
         if (!deedService.existingDeed(id)) {
+
             return "redirect:/todolist";
         }
 
@@ -43,6 +45,7 @@ public class TodolistController {
 
     @GetMapping("/addDeed")
     public String addDeed(@ModelAttribute("deed") Deed deed) {
+
         return "addDeed";
     }
 
@@ -51,6 +54,7 @@ public class TodolistController {
                          BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()) {
+
             return "addDeed";
         }
 
@@ -63,6 +67,7 @@ public class TodolistController {
     public String editDeed(@PathVariable("id") int id, Model model) {
 
         if (!deedService.existingDeed(id)) {
+
             return "redirect:/todolist";
         }
 
@@ -76,6 +81,7 @@ public class TodolistController {
                              BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()) {
+
             return "editDeed";
         }
 

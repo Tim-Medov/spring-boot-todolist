@@ -1,5 +1,5 @@
 
-package enterprise.repository;
+package enterprise.repositories;
 
 import enterprise.models.Deed;
 import org.springframework.data.repository.CrudRepository;
